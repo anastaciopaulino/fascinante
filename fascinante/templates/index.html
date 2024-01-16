@@ -1,0 +1,161 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <title>Facinante</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <style>
+      @font-face {
+        font-family: "SuaFonte";
+        src: url("{% static 'fonts/chapaza.' %}") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+      }
+
+      body {
+        background-color: #fcfaf9;
+        margin: 0;
+        padding: 0;
+        font-family: "Chapaza";
+      }
+
+      .navbar {
+        border-bottom: 1px solid #4c4343;
+      }
+
+      .section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100vh;
+        padding: 0 50px;
+      }
+
+      .section-message {
+        margin-right: 40px;
+      }
+
+      .section-message h4 {
+        font-size: 30px;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+
+      .section-message h1 {
+        font-size: 120px;
+        margin-bottom: 30px;
+      }
+
+      .section-message button {
+        padding: 10px;
+        font-size: 22px;
+        border-radius: 0px !important;
+        background-color: #4c4343;
+        border: none !important;
+      }
+
+      .oval-image {
+        border: 1px solid #4c4343;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Facinante</a>
+      </nav>
+
+      <div class="section">
+        <div class="section-message">
+          <h4>Seja bem-vindo/a!</h4>
+          <h1>Cuide do seu corpo</h1>
+          <button
+            class="btn btn-primary"
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#formModal"
+          >
+            Faça o seu agendamento
+          </button>
+        </div>
+        <img
+          src="{% static 'images/bs-01.jpg' %}"
+          alt="Imagem"
+          class="oval-image"
+          width="400"
+        />
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="formModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">
+              Realizar agendamento
+            </h1>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form
+              id="agendamentoForm"
+              method="post"
+              action="{% url 'home' %}"
+            >
+              {% csrf_token %} {{ form.as_p }}
+              <button type="submit" class="btn btn-primary">Agendar</button>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+      integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+      crossorigin="anonymous"
+    ></script>
+    <script src="{% static 'js/main.js' %}"></script>
+  </body>
+</html>
